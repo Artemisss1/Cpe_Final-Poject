@@ -1,0 +1,94 @@
+from datetime import datetime
+import random
+import sys
+
+all_products = [[1, 'Mathematics in Everyday Life', 20, '₱500'], [2, '21st Century Literature', 100, '₱467'],
+                [3, 'Basic Calculus', 200, '₱654'], [4, 'General Physics 1', 100, '₱532'],
+                [5, 'Personal Development', 120, '₱655']]
+
+
+def banner():
+    print("*************************************")
+    print("\t National Book Shop")
+    print("*************************************")
+    print("\t1.Show All Books")
+    print("\t2.Buy Books")
+    print("\t3.Add Books")
+    print("\t4.Remove Books")
+    print("\t5.Exit")
+    print("**************************************")
+
+
+def display_all():
+    print("Number\tBooks\t\t\t\tOn hand\tPrice")
+    for item in all_products:
+        print("{0}\t{1}\t{2}\t\t{3}".format(item[0], item[1], item[2], item[3]))
+
+
+def order_summary(product, name):
+    print("***********************************************")
+    print("\t\tNational Book Shop")
+    print("***********************************************")
+    print("Order Summary\tDate:{}".format(str(datetime.now())))
+    print("Customer Name: {}".format(name))
+    print(" Book Title: {}".format(item[1]))
+    print("Price: {}".format(item[-1]))
+    print("***********************************************")
+    print("\t\tTotal Bill Amount: {}".format(item[-1]))
+
+
+def generate_bill(product, name):
+    print("***********************************************")
+    print("\t\tNational Book Shop")
+    print("***********************************************")
+    print("Bill:{} \tDate:{}".format(int(random.random() * 100000), str(datetime.now())))
+    print("Customer Name: {}".format(name))
+    print("Book Title: {}".format(item[1]))
+    print("Price: {}".format(item[-1]))
+    print("***********************************************")
+    print("\t\tTotal Bill Amount: {}".format(item[-1]))
+
+
+while (True):
+    banner()
+    choice = int(input())
+    if choice == 1:
+        display_all()
+    elif choice == 2:
+        display_all()
+        prod_id = int(input("Enter the Product ID: "))
+        for item in all_products:
+            if item[0] == prod_id:
+                name = input("Customer Name: ")
+                order_summary(item, name)
+                cnf = input("Confirm the Order(Y/N)")
+                if cnf == 'Y':
+                    item[2] -= 1
+                    generate_bill(item, name)
+                    print("Thanks For shopping with Us")
+                    sys.exit(0)
+                else:
+                    print("Continue Exploring the shop")
+    elif choice == 3:
+        username = str(input("Enter Admin UserID: "))
+        password = str(input("Enter the Password: "))
+        if username == "Ria" and password == "gale":
+            prod = []
+            prod.append(len(all_products) + 1)
+            prod.append(str(input("Enter the Product Name: ")))
+            prod.append(int(input("Available: ")))
+            prod.append(float(input("Price: ")))
+            all_products.append(prod)
+    
+        else:
+            print("Incorrect username and password")
+    elif choice == 4:
+        username = str(input("Enter Admin UserID: "))
+        password = str(input("Enter the Password: "))
+        if username == "Ria" and password == "gale":
+            print("The book list starts from zero (0)")
+            item = int(input("Enter the Product Number: "))
+            all_products.pop(item)
+    else:
+        print("Goodbye!!")
+        break
