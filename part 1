@@ -1,21 +1,32 @@
+ntory system project
+print("*************************************")
+print("\t Welcome to National Book Shop")
+print("*************************************")
+
 from datetime import datetime
 import random
 import sys
 
-all_products = [[1, 'Mathematics in Everyday Life', 20, '₱500'], [2, '21st Century Literature', 100, '₱467'],
-                [3, 'Basic Calculus', 200, '₱654'], [4, 'General Physics 1', 100, '₱532'],
-                [5, 'Personal Development', 120, '₱655']]
+all_products = [
+    [1, 'Mathematics in Everyday Life', 20, '₱500'],
+    [2, '21st Century Literature', 100, '₱467'],
+    [3, 'Basic Calculus', 200, '₱654'],
+    [4, 'General Physics 1', 100, '₱532'],
+    [5, 'Personal Development', 120, '₱655']
+]
 
+print("")
 
 def banner():
     print("*************************************")
-    print("\t National Book Shop")
+    print("\t Inventory Management MENU: ")
     print("*************************************")
     print("\t1.Show All Books")
     print("\t2.Buy Books")
     print("\t3.Add Books")
     print("\t4.Remove Books")
-    print("\t5.Exit")
+    print("\t5.Remove Books")
+    print("\t6.Exit")
     print("**************************************")
 
 
@@ -51,7 +62,8 @@ def generate_bill(product, name):
 
 while (True):
     banner()
-    choice = int(input())
+    choice = int(input('Enter your choice (1-5): '))
+    print("***********************************************")
     if choice == 1:
         display_all()
     elif choice == 2:
@@ -73,22 +85,35 @@ while (True):
         username = str(input("Enter Admin UserID: "))
         password = str(input("Enter the Password: "))
         if username == "Ria" and password == "gale":
+            print("***********************************************")
+            print("Log In")
+            print("***********************************************")
             prod = []
             prod.append(len(all_products) + 1)
             prod.append(str(input("Enter the Product Name: ")))
             prod.append(int(input("Available: ")))
             prod.append(float(input("Price: ")))
             all_products.append(prod)
-    
+
         else:
             print("Incorrect username and password")
     elif choice == 4:
         username = str(input("Enter Admin UserID: "))
         password = str(input("Enter the Password: "))
         if username == "Ria" and password == "gale":
+            print("***********************************************")
+            print("Log In")
+            print("***********************************************")
             print("The book list starts from zero (0)")
             item = int(input("Enter the Product Number: "))
+            print("You successfully removed the item!")
             all_products.pop(item)
+
+    elif choice == 5:
+
     else:
         print("Goodbye!!")
+        print("***********************************************")
+        print("Log Out")
+        print("***********************************************")
         break
